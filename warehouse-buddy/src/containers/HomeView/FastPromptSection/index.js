@@ -7,13 +7,13 @@ export const FastPromptSection = () => {
 
     const setFastPromptsData = () => {
         fetch("http://localhost:5000/fast_prompts")
-          .then(response => {
-            return response.json()
-          })
-          .then(data => {
-            setFastPrompts(data)
-            console.log(data)
-          })
+            .then(response => {
+                return response.json()
+            })
+            .then(data => {
+                setFastPrompts(data)
+                console.log(data)
+            })
     }
 
     useEffect(() => {
@@ -22,12 +22,19 @@ export const FastPromptSection = () => {
 
     return (
         <div class="fast-prompt-container">
-                    <Flex  alignItems="center" justifyContent="center">
-            <ButtonGroup gap="4">
-              
-              <Button colorScheme="yellow">{fast_prompts.length === 0 ? "No prompts" : fast_prompts[0].fast_prompt_text}</Button>
-              <Button colorScheme="blue">BlackAlpha</Button>
-            </ButtonGroup>
+            <Flex alignItems="center" justifyContent="center">
+                <Stack spacing="4">
+                    {fast_prompts.slice(0, 3).map((prompt, index) => (
+                        <ButtonGroup key={index}>
+                            <Button flex="1" colorScheme="blue">{prompt.fast_prompt_text}</Button>
+                            {fast_prompts[index + 1] &&
+                                <Button flex="1" colorScheme="blue">{fast_prompts[index + 1].fast_prompt_text}</Button>
+                            }
+                        </ButtonGroup>
+                    ))}
+
+                </Stack>
+
             </Flex>
 
         </div>
