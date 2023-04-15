@@ -28,6 +28,13 @@ export const ChatInput = () => {
     const dispatch = useDispatch();
     const { isOpen, onOpen, onClose } = useDisclosure()
 
+    const customOnClose = () => {
+        onClose();
+        if (speaking) {
+            cancel();
+        }
+    }
+
     const response = useSelector(responseSelector);
     const loading = useSelector(loadingSelector);
     console.log('response');
@@ -57,7 +64,7 @@ export const ChatInput = () => {
         stop();
     }
 
-    const { speak } = useSpeechSynthesis();
+    const { speak, speaking, cancel } = useSpeechSynthesis();
     const [talk, setTalk] = useState(true);
 
     // useEffect, when loading changes from true to false (i.e. when the response is received)
@@ -95,7 +102,7 @@ export const ChatInput = () => {
             </div>
             
            
-            <Modal isOpen={isOpen} onClose={onClose}>
+            <Modal isOpen={isOpen} onClose={customOnClose}>
                 <ModalOverlay />
                 <ModalContent>
                 <ModalHeader>Warehouse Buddy 😊</ModalHeader>
@@ -117,7 +124,7 @@ export const ChatInput = () => {
                 </ModalBody>
 
                 <ModalFooter>
-                    <Button colorScheme='blue' mr={3} onClick={onClose}>
+                    <Button colorScheme='blue' mr={3} onClick={customOnClose}>
                     Close
                     </Button>
                 </ModalFooter>
