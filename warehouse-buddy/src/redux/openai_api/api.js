@@ -7,7 +7,7 @@ const SYSTEM_MSG = WAREHOUSE_BASIC_INFO + RESPONSE_INSTRUCTIONS
 export const FetchResponse = async (searchTerm) => {
 
     console.log(SYSTEM_MSG);
-    
+
     const requestHeaders = {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${OPENAI_API_KEY}`
