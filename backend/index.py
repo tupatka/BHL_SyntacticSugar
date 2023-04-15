@@ -9,21 +9,8 @@ def hello_world():
 
 @app.route('/tasks', methods=['GET'])
 def get_tasks():
-    json_result = {
-        "tasks": [
-            {
-                "id": 1,
-                "title": "Task 1",
-                "description": "Description 1",
-                "done": False
-            },
-            {
-                "id": 2,
-                "title": "Task 2",
-                "description": "Description 2",
-                "done": False
-            },
-        ]
-    }
+
+    with open('db.json', 'r') as open_file:
+         json_result = json.load(open_file)
 
     return json_result
