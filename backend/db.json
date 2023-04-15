@@ -29,51 +29,51 @@
     "tasks": [
         {
             "id": 1,
-            "title": "Unpack pallets with computers",
-            "description": "Unpack pallets from company BestHackingLeague and put them in sector 2 on rack A with position 1",
+            "title": "Rozpakuj palety z komputerami",
+            "description": "Rozpakuj palety z firmy BestHackingLeague i umieść je w sektorze 2 na regale A na pozycji 1",
             "category": "unpacking",
             "done": "False",
             "user_id": 1
         },
         {
             "id": 2,
-            "title": "Move broken forklift to sector A",
-            "description": "Broken forklift is located at the end of the warehouse. Move it to sector A. It is not allowed to start the forklift to move it.",
+            "title": "Przenieś uszkodzony wózek widłowy do sektora A",
+            "description": "Uszkodzony wózek widłowy znajduje się na końcu magazynu. Przenieś go do sektora A. Nie wolno uruchamiać wózka widłowego, aby go przemieścić.",
             "category": "cleaning",
             "done": "False",
             "user_id": 1
         }
-    ],
+        ],
     "fast_prompts": [
         {
             "id": 1,
-            "fast_prompt_text": "Where is the pallet to unpack?",
+            "fast_prompt_text": "Gdzie znajduje się paleta do rozpakowania?",
             "category": ["unpacking", "tools"],
             "seniority": ["Junior", "Regular", "Specialist"]
         },
         {
             "id": 2,
-            "fast_prompt_text": "How to get to my sector?",
+            "fast_prompt_text": "Jak dotrzeć do mojego sektora?",
             "category": ["unpacking", "packing", "cleaning" ,"zones"],
             "seniority": ["Junior"]
         },
         {
             "id": 3,
-            "fast_prompt_text": "What is the forklift?",
+            "fast_prompt_text": "Co to jest wózek widłowy?",
             "category": ["unpacking", "packing"],
             "seniority": ["Junior"]
         },
         {
             "id": 4,
-            "fast_prompt_text": "Where to put knives?",
+            "fast_prompt_text": "Gdzie umieścić noże?",
             "category": ["unpacking", "packing"],
             "seniority": ["Junior"]
         },
         {
-            "id": 4,
-            "fast_prompt_text": "Where to put knives?",
-            "category": ["unpacking", "packing"],
-            "seniority": ["Junior"]
+            "id": 5,
+            "fast_prompt_text": "Gdzie jest apteczka?",
+            "category": ["safety"],
+            "seniority": ["Junior", "Regular", "Specialist"]
         }
     ]
 }
