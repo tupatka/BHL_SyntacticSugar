@@ -8,11 +8,13 @@ import { TaskBanner } from './TaskBanner';
 import { SpeechToText } from './ChatInput/SpeechToText';
 
 import './index.css';
+import { TicketSystem } from './TicketSystem';
 
 export const HomeView = ({tasks}) => {
     return (
         <div class="home-view-container">
-            <TaskBanner tasks={tasks} /> 
+            <TaskBanner tasks={tasks} />
+            <TicketSystem /> 
             <FastPromptSection />
             <ChatInput />
         </div>
