@@ -1,9 +1,11 @@
 import './index.css';
+import { Input } from '@chakra-ui/react'
+
 
 export const ChatInput = () => {
     return (
         <div class="chat-input-container">
-            This is chat input
+            <Input placeholder='Enter question' />
         </div>
     );
 }
