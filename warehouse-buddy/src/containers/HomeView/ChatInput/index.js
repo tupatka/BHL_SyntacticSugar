@@ -33,10 +33,13 @@ export const ChatInput = () => {
     console.log('response');
     console.log(response);
 
-    const [input, setInput] = useState(null);
+    const [input, setInput] = useState("");
+    const [prevInput, setPrevInput] = useState("");
     console.log(input);
 
     const getChatResponse = (prompt, dispatch) => {
+        setPrevInput(input);
+        setInput("");
         dispatch(setLoading());
         dispatch(getResponse(prompt));
         onOpen();
@@ -51,6 +54,7 @@ export const ChatInput = () => {
                     }}
                     resize="vertical"
                     placeholder='Enter question'
+                    value={input}
                 />
                 <IconButton
                     aria-label='Search'
@@ -67,10 +71,12 @@ export const ChatInput = () => {
                 <ModalCloseButton />
                 <ModalBody>
                     <div class="user-input-in-modal">
-                        {input}
+                        {prevInput}
                     </div>
                     { loading ? (
-                            <CircularProgress isIndeterminate color='blue.300' />
+                            <div class="response-loader">
+                                <CircularProgress isIndeterminate color='blue.300' />
+                            </div>
                         ) : (
                             <div>
                                 {response}
