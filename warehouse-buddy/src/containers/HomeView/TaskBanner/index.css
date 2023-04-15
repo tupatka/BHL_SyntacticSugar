@@ -3,3 +3,7 @@
     background-color: aquamarine;
     width: 100%;
 }
+
+#current-task{
+    color: rgb(204, 34, 34);
+}

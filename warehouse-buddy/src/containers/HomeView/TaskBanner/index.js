@@ -7,9 +7,9 @@ import { IconButton } from '@chakra-ui/react'
 import{Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton} from '@chakra-ui/react'
 import { AllTasksList } from './AllTasksList';
 
-export const TaskBanner = () => {
+export const TaskBanner = ({tasks}) => {
 
-    let tasks = ["Zapakuj paczki z magazynu", "Odbierz dziecko z przedszkola", "task3", "task4"];
+    // let tasks = ["Zapakuj paczki z magazynu", "Odbierz dziecko z przedszkola", "task3", "task4"];
     let dropped = false;
 
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -19,7 +19,14 @@ export const TaskBanner = () => {
             <Card>
                 <CardBody>
                     <Flex>
-                        <span> {tasks[0]} </span>
+                        <b id="current-task">
+                            {tasks.length === 0 ? (
+                                <span> No tasks </span>
+                            ) : (
+                                <span> {tasks[0].title} </span>
+                            )
+                            }
+                        </b>
                         <Spacer />
                         <IconButton
                             onClick={onOpen}
@@ -37,7 +44,7 @@ export const TaskBanner = () => {
                     <ModalHeader>All Tasks</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
-                        <AllTasksList></AllTasksList>
+                        <AllTasksList tasks={tasks} />
                     </ModalBody>
                 </ModalContent>
             </Modal>
