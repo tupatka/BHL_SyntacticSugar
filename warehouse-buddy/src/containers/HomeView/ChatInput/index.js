@@ -30,9 +30,8 @@ export const ChatInput = () => {
 
     const customOnClose = () => {
         onClose();
-        if (speaking) {
-            cancel();
-        }
+        cancel();
+        setTalk(false);
     }
 
     const response = useSelector(responseSelector);
@@ -57,6 +56,7 @@ export const ChatInput = () => {
       onResult: (result) => {
         setInput(result);
       },
+      lang: 'en-US'
     });
 
     const handleMouseUp = () => {
