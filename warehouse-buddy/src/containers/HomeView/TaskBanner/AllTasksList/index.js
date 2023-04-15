@@ -10,8 +10,6 @@ import {
   } from '@chakra-ui/react'
 
 export const AllTasksList = ({tasks}) => {
-
-    // let tasks = ["Zapakuj paczki z magazynu", "Odbierz dziecko z przedszkola", "task3", "task4"];
     let first = "No tasks";
     let rest_tasks = [];
     if (first.length !== 0) {
