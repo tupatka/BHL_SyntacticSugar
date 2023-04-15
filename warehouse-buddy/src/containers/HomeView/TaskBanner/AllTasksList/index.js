@@ -24,7 +24,7 @@ export const AllTasksList = ({tasks}) => {
                 <h2>
                 <AccordionButton>
                     <Box as="span" flex='1' textAlign='left'>
-                        {task.title}
+                        <b>{task.title}</b>
                     </Box>
                     <AccordionIcon />
                 </AccordionButton>
