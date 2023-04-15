@@ -12,7 +12,7 @@ export const TaskBanner = ({tasks}) => {
 
     return (
         <div class="task-banner-container">
-            <Card>
+            <Card style={{ boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.06)' }}>
                 <CardBody>
                     <Flex>
                         <b id="current-task">
