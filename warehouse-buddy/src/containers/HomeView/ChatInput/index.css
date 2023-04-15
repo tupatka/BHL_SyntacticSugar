@@ -19,3 +19,9 @@
     color: rgb(172, 172, 172);
     margin-bottom: 10px;
 }
+
+.response-loader {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
