@@ -20,8 +20,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadingSelector, responseSelector } from '../../../redux/openai_api/selectors';
 import { getResponse, setLoading } from '../../../redux/openai_api/actions';
-import { SpeechToText } from './SpeechToText';
-
+import { useSpeechRecognition } from 'react-speech-kit';
 
 
 export const ChatInput = () => {
@@ -46,9 +45,23 @@ export const ChatInput = () => {
         onOpen();
     }
 
+    const { listen, listening, stop } = useSpeechRecognition({
+      onResult: (result) => {
+        setInput(result);
+      },
+    });
+
+    const handleMouseUp = () => {
+        getChatResponse(input, dispatch);
+        stop();
+    }
+
+
     return (
         <div class="chat-input-container">
-            <SpeechToText />
+            <button onMouseDown={listen} onMouseUp={handleMouseUp}>
+                🎤
+            </button>
             <div class="chat-input">
                 <Input 
                     onChange={(event) => {
