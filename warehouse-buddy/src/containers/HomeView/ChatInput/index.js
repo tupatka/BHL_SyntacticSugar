@@ -1,23 +1,32 @@
 import './index.css';
 import { Input,
          IconButton,
+         Button,
+         useDisclosure,
          FormControl, Text,
          Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
-
+import {
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalBody,
+    ModalCloseButton,
+    CircularProgress
+} from '@chakra-ui/react'
 import { CheckIcon } from '@chakra-ui/icons'
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadingSelector, responseSelector } from '../../../redux/openai_api/selectors';
 import { getResponse, setLoading } from '../../../redux/openai_api/actions';
 
-const getChatResponse = (prompt, dispatch) => {
-    dispatch(setLoading());
-    dispatch(getResponse(prompt));
-}
+
 
 export const ChatInput = () => {
 
     const dispatch = useDispatch();
+    const { isOpen, onOpen, onClose } = useDisclosure()
 
     const response = useSelector(responseSelector);
     const loading = useSelector(loadingSelector);
@@ -26,6 +35,12 @@ export const ChatInput = () => {
 
     const [input, setInput] = useState(null);
     console.log(input);
+
+    const getChatResponse = (prompt, dispatch) => {
+        dispatch(setLoading());
+        dispatch(getResponse(prompt));
+        onOpen();
+    }
 
     return (
         <div class="chat-input-container">
@@ -43,19 +58,36 @@ export const ChatInput = () => {
                     onClick={() => getChatResponse(input, dispatch)}
                 />
             </div>
-            {
-                loading ? (
-                    "loading..."
-                ) : (
-                    response ? (
-                        <Card>
-                            <CardBody>
-                                <Text> {response} </Text>
-                            </CardBody>
-                        </Card>
-                    ) : <></>
-                )
-            }
+            
+           
+            <Modal isOpen={isOpen} onClose={onClose}>
+                <ModalOverlay />
+                <ModalContent>
+                <ModalHeader>Warehouse Buddy 😊</ModalHeader>
+                <ModalCloseButton />
+                <ModalBody>
+                    <div class="user-input-in-modal">
+                        {input}
+                    </div>
+                    { loading ? (
+                            <CircularProgress isIndeterminate color='blue.300' />
+                        ) : (
+                            <div>
+                                {response}
+                            </div>
+                            
+                        )
+                    }
+                </ModalBody>
+
+                <ModalFooter>
+                    <Button colorScheme='blue' mr={3} onClick={onClose}>
+                    Close
+                    </Button>
+                </ModalFooter>
+                </ModalContent>
+            </Modal>
+            
         </div>
     );
 }

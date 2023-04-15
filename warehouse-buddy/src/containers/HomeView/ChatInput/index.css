@@ -14,3 +14,8 @@
     flex-direction: row;
     gap: 10px;
 }
+
+.user-input-in-modal {
+    color: rgb(172, 172, 172);
+    margin-bottom: 10px;
+}
