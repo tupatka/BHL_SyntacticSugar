@@ -1,12 +1,12 @@
-import { API_BASE_URL, API_TOKEN } from './const';
+import { API_BASE_URL, API_TOKEN, WAREHOUSE_BASIC_INFO, RESPONSE_INSTRUCTIONS} from './const';
 
 const OPENAI_API_KEY = process.env.REACT_APP_OPENAI_API_KEY
 
-const SYSTEM_MSG = "You are a helpful assistant in Sugar Warehouse. Help workers in their tasks."
+const SYSTEM_MSG = WAREHOUSE_BASIC_INFO + RESPONSE_INSTRUCTIONS
 
 export const FetchResponse = async (searchTerm) => {
 
-    console.log("searching: " + searchTerm);
+    console.log(SYSTEM_MSG);
 
     const requestHeaders = {
         'Content-Type': 'application/json',
