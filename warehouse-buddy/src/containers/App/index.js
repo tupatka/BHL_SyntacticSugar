@@ -3,9 +3,14 @@ import { HomeView } from '../HomeView';
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from 'react';
 
+import { ChakraProvider } from '@chakra-ui/react'
+
+
 const App = () => {
     return (
-        <HomeView />
+        <ChakraProvider>
+            <HomeView />
+        </ChakraProvider>
     );
 }
 
