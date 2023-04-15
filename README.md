@@ -5,3 +5,7 @@ Repository for 2023 Best Hacking League
 - Anna Stawiska
 - Adam Deryło
 - Jakub Podolak
+
+#### How to run:
+- npm install
+- npm start
