@@ -8,10 +8,6 @@ import{Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, M
 import { AllTasksList } from './AllTasksList';
 
 export const TaskBanner = ({tasks}) => {
-
-    // let tasks = ["Zapakuj paczki z magazynu", "Odbierz dziecko z przedszkola", "task3", "task4"];
-    let dropped = false;
-
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     return (
