@@ -4,6 +4,6 @@
     width: 100%;
 }
 
-.task-banner-header {
-    font-size: 2em;
+#current-task{
+    color: rgb(204, 34, 34);
 }
