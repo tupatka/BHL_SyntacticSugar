@@ -1,5 +1,5 @@
 import './index.css';
-import { Flex, Button, Stack, Box, ButtonGroup, Wrap, WrapItem } from "@chakra-ui/react";
+import { Flex, Button, Stack, Box, ButtonGroup, Wrap, WrapItem, useBreakpointValue } from "@chakra-ui/react";
 import { useEffect, useState } from 'react';
 
 export const FastPromptSection = () => {
@@ -20,15 +20,18 @@ export const FastPromptSection = () => {
         setFastPromptsData()
     }, [])
 
+    const isMobile = useBreakpointValue({ base: true, md: false })
+    const rows = isMobile ? 6 : 3;
+
     return (
         <div class="fast-prompt-container">
             <Flex alignItems="center" justifyContent="center">
                 <Stack spacing="4">
-                    {fast_prompts.slice(0, 3).map((prompt, index) => (
-                        <ButtonGroup key={index}>
-                            <Button flex="1" colorScheme="blue">{prompt.fast_prompt_text}</Button>
-                            {fast_prompts[index + 1] &&
-                                <Button flex="1" colorScheme="blue">{fast_prompts[index + 1].fast_prompt_text}</Button>
+                    {fast_prompts.slice(0, rows).map((prompt, index) => (
+                        <ButtonGroup key={index} flexDirection={isMobile ? "column" : "row"}>
+                            <Button flex={isMobile ? "none" : "1"} colorScheme="blue">{prompt.fast_prompt_text}</Button>
+                            {fast_prompts[index + 1] && isMobile == false &&
+                                <Button flex="1" colorScheme="yellow">{fast_prompts[index + 1].fast_prompt_text}</Button>
                             }
                         </ButtonGroup>
                     ))}
