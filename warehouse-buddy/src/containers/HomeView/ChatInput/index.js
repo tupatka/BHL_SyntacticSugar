@@ -30,9 +30,8 @@ export const ChatInput = () => {
 
     const customOnClose = () => {
         onClose();
-        if (speaking) {
-            cancel();
-        }
+        cancel();
+        setTalk(false);
     }
 
     const response = useSelector(responseSelector);
@@ -57,6 +56,7 @@ export const ChatInput = () => {
       onResult: (result) => {
         setInput(result);
       },
+      lang: 'en-US'
     });
 
     const handleMouseUp = () => {
@@ -82,9 +82,6 @@ export const ChatInput = () => {
 
     return (
         <div class="chat-input-container">
-            <button onMouseDown={listen} onMouseUp={handleMouseUp}>
-                🎤
-            </button>
             <div class="chat-input">
                 <Input 
                     onChange={(event) => {
@@ -100,6 +97,9 @@ export const ChatInput = () => {
                     onClick={() => getChatResponse(input, dispatch)}
                 />
             </div>
+            <Button onMouseDown={listen} onMouseUp={handleMouseUp}>
+                🎤
+            </Button>
             
            
             <Modal isOpen={isOpen} onClose={customOnClose}>
