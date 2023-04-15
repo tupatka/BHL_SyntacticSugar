@@ -63,7 +63,12 @@ export const ChatInput = () => {
     // useEffect, when loading changes from true to false (i.e. when the response is received)
     // run function to speak the response
     if (talk && response && !loading && response.length !== 0) {
-        speak({ text: response });
+        const voices = window.speechSynthesis.getVoices();
+        const englishVoice = voices.find((voice) => voice.lang === 'en-US');
+
+        console.log(englishVoice);
+
+        speak({ text: response, voice: englishVoice});
         setTalk(false);
         console.log("dupa");
     }
