@@ -8,10 +8,10 @@ import { TaskBanner } from './TaskBanner';
 
 import './index.css';
 
-export const HomeView = () => {
+export const HomeView = ({tasks}) => {
     return (
         <div class="home-view-container">
-            <TaskBanner /> 
+            <TaskBanner tasks={tasks} /> 
             <FastPromptSection />
             <ChatInput />
         </div>

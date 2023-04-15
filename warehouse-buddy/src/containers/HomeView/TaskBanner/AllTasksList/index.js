@@ -9,26 +9,30 @@ import {
     AccordionIcon,
   } from '@chakra-ui/react'
 
-export const AllTasksList = () => {
+export const AllTasksList = ({tasks}) => {
 
-    let tasks = ["Zapakuj paczki z magazynu", "Odbierz dziecko z przedszkola", "task3", "task4"];
-    let first = tasks[0];
-    let rest_tasks = tasks.slice(1);
+    // let tasks = ["Zapakuj paczki z magazynu", "Odbierz dziecko z przedszkola", "task3", "task4"];
+    let first = "No tasks";
+    let rest_tasks = [];
+    if (first.length !== 0) {
+        first = tasks[0];
+        rest_tasks = tasks.slice(1);
+    }
+    
     const list = []
-
     rest_tasks.forEach((task) => {
         list.push(
             <AccordionItem>
                 <h2>
                 <AccordionButton>
                     <Box as="span" flex='1' textAlign='left'>
-                    {task}
+                        {task.title}
                     </Box>
                     <AccordionIcon />
                 </AccordionButton>
                 </h2>
                 <AccordionPanel pb={4}>
-                Test
+                    {task.description}
                 </AccordionPanel>
             </AccordionItem>)
     })
@@ -40,13 +44,25 @@ export const AllTasksList = () => {
                 <h2>
                 <AccordionButton>
                     <Box as="span" flex='1' textAlign='left'>
-                    <b id="current-task"> {first} </b>
+                        <b id="current-task"> 
+                            {tasks.length === 0 ? (
+                                <span> No tasks </span>
+                            ) : (
+                                <span> {first.title} </span>
+                            )
+                            } 
+                        </b>
                     </Box>
                     <AccordionIcon />
                 </AccordionButton>
                 </h2>
                 <AccordionPanel pb={4}>
-                Test
+                {tasks.length === 0 ? (
+                    <span>  </span>
+                ) : (
+                    <span> {first.description} </span>
+                )
+                }
                 </AccordionPanel>
             </AccordionItem>
             {list}
