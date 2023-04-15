@@ -21,7 +21,7 @@ export const TicketSystem = () => {
     }
 
     return (
-        <div class="task-banner-container">
+        <div class="ticket-system-container">
             <Button onClick={onOpen} colorScheme="blue" variant="outline">Report Issue</Button>
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
@@ -32,7 +32,7 @@ export const TicketSystem = () => {
                         <Select placeholder='Ticket type'>
                             {list}
                         </Select>   
-                        <Textarea placeholder='Write your description here.' size='md' />
+                        <Textarea placeholder='Write your description here.' size='md' h='calc(60vh)' />
                     </ModalBody>
                     <ModalFooter>
                         <Button colorScheme='blue' mr={3} onClick={onSend}>
