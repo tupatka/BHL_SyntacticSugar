@@ -2,7 +2,7 @@ import { API_BASE_URL, API_TOKEN } from './const';
 
 const OPENAI_API_KEY = process.env.REACT_APP_OPENAI_API_KEY
 
-const SYSTEM_MSG = "Jesteś asystentem w magazynie Warehouse INC. Twoim zadaniem jest pomagać pracownikom w rozwiązywaniu ich zadań."
+const SYSTEM_MSG = "You are a helpful assistant in Sugar Warehouse. Help workers in their tasks."
 
 export const FetchResponse = async (searchTerm) => {
 
