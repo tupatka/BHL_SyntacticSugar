@@ -12,11 +12,14 @@ Repository for 2023 Best Hacking League
 
 
 ### Run backend 
+cd backend
 sudo apt install python3 python3-venv
 python3 -m venv env
 source env/bin/activate
 pip install -r requirements.txt
-
 export FLASK_APP=index
 export FLASK_ENV=development
+
 flask run
+
+jest serwowana baza danych na http://localhost:5000/tasks
