@@ -1,6 +1,8 @@
 import './index.css';
 import { Button, Fade, ScaleFade, Slide, SlideFade, Collapse, Box,  useDisclosure  } from '@chakra-ui/react'
-import { ChevronUpIcon } from '@chakra-ui/icons'
+import { ArrowForwardIcon } from '@chakra-ui/icons'
+import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
+import { IconButton } from '@chakra-ui/react'
 
 import{Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton} from '@chakra-ui/react'
 import { AllTasksList } from './AllTasksList';
@@ -14,7 +16,18 @@ export const TaskBanner = () => {
 
     return (
         <div class="task-banner-container">
-            <Button onClick={onOpen}><ChevronUpIcon/></Button>
+            <Card>
+                <CardBody>
+                    <span> {tasks[0]} </span>
+                    <IconButton
+                        onClick={onOpen}
+                        colorScheme='blue'
+                        aria-label='Search database'
+                        icon={<ArrowForwardIcon />}
+                        size="sm"
+                    />
+                </CardBody>
+            </Card>
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
