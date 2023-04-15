@@ -24,23 +24,33 @@ export const FastPromptSection = () => {
     const rows = isMobile ? 6 : 3;
 
     return (
-        <div class="fast-prompt-container">
-            <Flex alignItems="center" justifyContent="center">
-                <Stack spacing="4">
-                    {fast_prompts.slice(0, rows).map((prompt, index) => (
-                        <ButtonGroup key={index} flexDirection={isMobile ? "column" : "row"}>
-                            <Button flex={isMobile ? "none" : "1"} colorScheme="blue">{prompt.fast_prompt_text}</Button>
-                            {fast_prompts[index + 1] && isMobile == false &&
-                                <Button flex="1" colorScheme="yellow">{fast_prompts[index + 1].fast_prompt_text}</Button>
-                            }
-                        </ButtonGroup>
-                    ))}
-
-                </Stack>
-
-            </Flex>
-
+        <div className="fast-prompt-container">
+            <Stack spacing="4">
+                {fast_prompts.slice(0, rows).map((prompt, index) => (
+                    <ButtonGroup key={index} flexDirection={isMobile ? "column" : "row"} borderRadius="md">
+                        <Button
+                            flex={isMobile ? "none" : "1"}
+                            colorScheme="blue"
+                            borderRadius="md"
+                            whiteSpace="normal"
+                            wordWrap="break-word"
+                        >
+                            {prompt.fast_prompt_text}
+                        </Button>
+                        {fast_prompts[index + 1] && !isMobile &&
+                            <Button
+                                flex="1"
+                                colorScheme="yellow"
+                                borderRadius="md"
+                                whiteSpace="normal"
+                                wordWrap="break-word"
+                            >
+                                {fast_prompts[index + 1].fast_prompt_text}
+                            </Button>
+                        }
+                    </ButtonGroup>
+                ))}
+            </Stack>
         </div>
-
     );
 }
