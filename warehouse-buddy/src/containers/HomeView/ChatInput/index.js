@@ -15,6 +15,8 @@ import {
     ModalCloseButton,
     CircularProgress
 } from '@chakra-ui/react'
+import Siriwave from 'react-siriwave';
+
 import { CheckIcon } from '@chakra-ui/icons'
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -64,6 +66,14 @@ export const ChatInput = () => {
         stop();
     }
 
+    const handleMicClick = () => {
+        if(listening) {
+            handleMouseUp();
+        } else {
+            listen();
+        }
+    }
+
     const { speak, speaking, cancel } = useSpeechSynthesis();
     const [talk, setTalk] = useState(true);
 
@@ -79,6 +89,9 @@ export const ChatInput = () => {
         setTalk(false);
         console.log("dupa");
     }
+
+
+    
 
     return (
         <div class="chat-input-container">
@@ -97,8 +110,14 @@ export const ChatInput = () => {
                     onClick={() => getChatResponse(input, dispatch)}
                 />
             </div>
-            <Button onMouseDown={listen} onMouseUp={handleMouseUp}>
-                🎤
+            <Button onMouseDown={handleMicClick}>
+                { listening ? (
+                    <div className="siriwave">
+                        <Siriwave theme="ios9" color="#1c63cc" amplitude={0.5}/>
+                    </div>
+                ) : (
+                    "Tap to speak"
+                )}
             </Button>
             
            
