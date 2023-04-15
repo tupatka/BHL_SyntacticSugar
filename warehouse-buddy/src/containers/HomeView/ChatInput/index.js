@@ -56,7 +56,7 @@ export const ChatInput = () => {
       onResult: (result) => {
         setInput(result);
       },
-      lang: 'en-US'
+      lang: 'en'
     });
 
     const handleMouseUp = () => {
@@ -71,7 +71,7 @@ export const ChatInput = () => {
     // run function to speak the response
     if (talk && response && !loading && response.length !== 0) {
         const voices = window.speechSynthesis.getVoices();
-        const englishVoice = voices.find((voice) => voice.lang === 'en-US');
+        const englishVoice = voices.find((voice) => voice.lang === 'pl');
 
         console.log(englishVoice);
 
