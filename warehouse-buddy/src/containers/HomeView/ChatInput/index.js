@@ -21,7 +21,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { loadingSelector, responseSelector } from '../../../redux/openai_api/selectors';
 import { getResponse, setLoading } from '../../../redux/openai_api/actions';
 import { useSpeechRecognition } from 'react-speech-kit';
-
+import { useSpeechSynthesis } from 'react-speech-kit';
 
 export const ChatInput = () => {
 
@@ -40,6 +40,7 @@ export const ChatInput = () => {
     const getChatResponse = (prompt, dispatch) => {
         setPrevInput(input);
         setInput("");
+        setTalk(true);
         dispatch(setLoading());
         dispatch(getResponse(prompt));
         onOpen();
@@ -56,6 +57,16 @@ export const ChatInput = () => {
         stop();
     }
 
+    const { speak } = useSpeechSynthesis();
+    const [talk, setTalk] = useState(true);
+
+    // useEffect, when loading changes from true to false (i.e. when the response is received)
+    // run function to speak the response
+    if (talk && response && !loading && response.length !== 0) {
+        speak({ text: response });
+        setTalk(false);
+        console.log("dupa");
+    }
 
     return (
         <div class="chat-input-container">
@@ -92,11 +103,10 @@ export const ChatInput = () => {
                             <div class="response-loader">
                                 <CircularProgress isIndeterminate color='blue.300' />
                             </div>
-                        ) : (
+                        ) : ( 
                             <div>
                                 {response}
                             </div>
-                            
                         )
                     }
                 </ModalBody>
