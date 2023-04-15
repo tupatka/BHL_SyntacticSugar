@@ -1,13 +1,13 @@
-import { API_BASE_URL, API_TOKEN } from './const';
+import { API_BASE_URL, API_TOKEN, WAREHOUSE_BASIC_INFO, RESPONSE_INSTRUCTIONS} from './const';
 
 const OPENAI_API_KEY = process.env.REACT_APP_OPENAI_API_KEY
 
-const SYSTEM_MSG = "Jesteś asystentem w magazynie Warehouse INC. Twoim zadaniem jest pomagać pracownikom w rozwiązywaniu ich zadań."
+const SYSTEM_MSG = WAREHOUSE_BASIC_INFO + RESPONSE_INSTRUCTIONS
 
 export const FetchResponse = async (searchTerm) => {
 
-    console.log("searching: " + searchTerm);
-
+    console.log(SYSTEM_MSG);
+    
     const requestHeaders = {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${OPENAI_API_KEY}`
