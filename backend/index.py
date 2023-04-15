@@ -11,6 +11,6 @@ def hello_world():
 def get_tasks():
 
     with open('db.json', 'r') as open_file:
-         json_result = json.load(open_file)
+        json_result = json.load(open_file)
 
     return json_result
