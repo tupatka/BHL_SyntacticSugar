@@ -56,7 +56,7 @@ export const ChatInput = () => {
       onResult: (result) => {
         setInput(result);
       },
-      lang: 'en'
+      lang: 'pl'
     });
 
     const handleMouseUp = () => {
