@@ -1,0 +1,79 @@
+{
+    "users":[
+        {
+            "id": 1,
+            "name": "John Doe",
+            "seniority": "Junior"
+        },
+        {
+            "id": 2,
+            "name": "Jane Spark",
+            "seniority": "Specialist"
+        },
+        {
+            "id": 3,
+            "name": "Paul Rubens",
+            "seniority": "Regular"
+        },
+        {
+            "id": 4,
+            "name": "Jackie Chan",
+            "seniority": "Junior"
+        },
+        {
+            "id": 5,
+            "name": "John Wick",
+            "seniority": "Junior"
+        }
+    ],
+    "tasks": [
+        {
+            "id": 1,
+            "title": "Unpack pallets with computers",
+            "description": "Unpack pallets from company BestHackingLeague and put them in sector 2 on rack A with position 1",
+            "category": "unpacking",
+            "done": "False",
+            "user_id": 1
+        },
+        {
+            "id": 2,
+            "title": "Move broken forklift to sector A",
+            "description": "Broken forklift is located at the end of the warehouse. Move it to sector A. It is not allowed to start the forklift to move it.",
+            "category": "cleaning",
+            "done": "False",
+            "user_id": 1
+        }
+    ],
+    "fast_prompts": [
+        {
+            "id": 1,
+            "fast_prompt_text": "Where is the pallet to unpack?",
+            "category": ["unpacking", "tools"],
+            "seniority": ["Junior", "Regular", "Specialist"]
+        },
+        {
+            "id": 2,
+            "fast_prompt_text": "How to get to my sector?",
+            "category": ["unpacking", "packing", "cleaning" ,"zones"],
+            "seniority": ["Junior"]
+        },
+        {
+            "id": 3,
+            "fast_prompt_text": "What is the forklift?",
+            "category": ["unpacking", "packing"],
+            "seniority": ["Junior"]
+        },
+        {
+            "id": 4,
+            "fast_prompt_text": "Where to put knives?",
+            "category": ["unpacking", "packing"],
+            "seniority": ["Junior"]
+        },
+        {
+            "id": 4,
+            "fast_prompt_text": "Where to put knives?",
+            "category": ["unpacking", "packing"],
+            "seniority": ["Junior"]
+        }
+    ]
+}
