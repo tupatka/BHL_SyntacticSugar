@@ -20,6 +20,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadingSelector, responseSelector } from '../../../redux/openai_api/selectors';
 import { getResponse, setLoading } from '../../../redux/openai_api/actions';
+import { SpeechToText } from './SpeechToText';
 
 
 
@@ -47,6 +48,7 @@ export const ChatInput = () => {
 
     return (
         <div class="chat-input-container">
+            <SpeechToText />
             <div class="chat-input">
                 <Input 
                     onChange={(event) => {
