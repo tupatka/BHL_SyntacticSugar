@@ -12,9 +12,11 @@ import {
 export const AllTasksList = () => {
 
     let tasks = ["Zapakuj paczki z magazynu", "Odbierz dziecko z przedszkola", "task3", "task4"];
+    let first = tasks[0];
+    let rest_tasks = tasks.slice(1);
     const list = []
 
-    tasks.forEach((task) => {
+    rest_tasks.forEach((task) => {
         list.push(
             <AccordionItem>
                 <h2>
@@ -34,6 +36,19 @@ export const AllTasksList = () => {
 
     return (
         <Accordion>
+            <AccordionItem>
+                <h2>
+                <AccordionButton>
+                    <Box as="span" flex='1' textAlign='left'>
+                    <b id="current-task"> {first} </b>
+                    </Box>
+                    <AccordionIcon />
+                </AccordionButton>
+                </h2>
+                <AccordionPanel pb={4}>
+                Test
+                </AccordionPanel>
+            </AccordionItem>
             {list}
         </Accordion>
     );
