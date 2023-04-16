@@ -58,7 +58,7 @@ export const WebcamScreenshot = () => {
                 videoConstraints={videoConstraints}
             />
             <div class="photo-button">
-                <Button colorScheme='teal' size="sm" onClick={capture}>Capture</Button>
+                <Button colorScheme='yellow' size="sm" onClick={capture}>Capture</Button>
             </div>
         </>
       ) : (
