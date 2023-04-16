@@ -6,6 +6,7 @@ import { ChatInput } from './ChatInput';
 import { FastPromptSection } from './FastPromptSection';
 import { TaskBanner } from './TaskBanner';
 import { SpeechToText } from './ChatInput/SpeechToText';
+import { WebcamScreenshot } from './WebcamScreenshot' ;
 
 import './index.css';
 
@@ -15,6 +16,7 @@ export const HomeView = ({tasks}) => {
             <TaskBanner tasks={tasks} /> 
             <FastPromptSection />
             <ChatInput />
+            <WebcamScreenshot />
         </div>
     );
 }
