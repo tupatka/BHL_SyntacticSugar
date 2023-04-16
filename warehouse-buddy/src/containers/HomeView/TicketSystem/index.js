@@ -4,10 +4,11 @@ import { Button, useDisclosure, Flex, Spacer } from '@chakra-ui/react'
 import{Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton} from '@chakra-ui/react'
 import { Textarea } from '@chakra-ui/react'
 import { Select } from '@chakra-ui/react'
-
-
+import { useSelector, useDispatch } from 'react-redux';
+import { sendTicket } from '../../../redux/openai_api/actions';
 
 export const TicketSystem = () => {
+    const dispatch = useDispatch();
     const { isOpen, onOpen, onClose } = useDisclosure()
     let categories = ["test1", "test2", "test3"]
     const list = []
@@ -17,7 +18,10 @@ export const TicketSystem = () => {
     })
 
     const onSend = () => {
-        onClose();
+            // Send data to the backend via POST
+            console.log("hejka");
+            dispatch(sendTicket("cokolwiek"));
+            onClose();
     }
 
     return (

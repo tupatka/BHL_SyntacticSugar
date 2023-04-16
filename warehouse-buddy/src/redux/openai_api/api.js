@@ -34,3 +34,24 @@ export const FetchResponse = async (searchTerm) => {
 }
 
 
+export const sendTicketApi = async (ticket) => {
+    console.log("Sending ticket!");
+    const jsonData = {
+        "text": "test z frontendu",
+        "category": "test"
+    };
+
+    const rawresponse = await fetch("http://localhost:5000/ticketing", { 
+        method: 'POST', 
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+        mode: 'no-cors',
+        body: JSON.stringify(jsonData) 
+    });
+
+    const response = await rawresponse;
+
+    return "done";
+}

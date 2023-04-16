@@ -39,3 +39,7 @@ export const WAREHOUSE_BASIC_INFO =
 
   Odpowiedź ma być zwięzła - możliwie mało zdań. Dawaj precyzyjne wskazówki. Nie odpowiadaj na pytania niezwiązane z pracą w magazynie
   `
+
+
+export const SEND_TICKET = "SEND_TICKET"
+export const SET_TICKET_SEND = "SET_TICKET_SEND"
