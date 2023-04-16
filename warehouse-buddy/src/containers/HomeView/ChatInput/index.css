@@ -1,18 +1,14 @@
 .chat-input-container {
-    margin-top: 10px;
     height: 10em;
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 10px;
 }
 
 .chat-input {
-    margin-top: 10px;
     width: 100%;
     display: flex;
     flex-direction: row;
-    gap: 10px;
 }
 
 .user-input-in-modal {
@@ -26,6 +22,8 @@
     justify-content: center;
 }
 
-.siriwave {
-    margin-top: 1em;
+.Siriwave{
+    
 }
+
+  
