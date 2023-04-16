@@ -1,6 +1,6 @@
 import './index.css';
 import React, { useCallback, useRef, useState } from "react";
-import Webcam from "react-webcam"
+import {Camera} from "react-camera-pro";
 import { Button } from '@chakra-ui/react'
 
 export const WebcamScreenshot = () => {
@@ -18,7 +18,7 @@ export const WebcamScreenshot = () => {
   let user_id = 0 + Math.random() * (1000000 - 0);
 
   const capture = useCallback(() => {
-    const imageSrc = webcamRef.current.getScreenshot();
+    const imageSrc = webcamRef.current.takePhoto();
     setImg(imageSrc);
 
     let apiUrl = 'http://localhost:5000/save_image';
@@ -47,16 +47,15 @@ export const WebcamScreenshot = () => {
   return (
     <div className="webcam-container">
       {img === null ? (
-        <>
-            <Webcam
-                audio={false}
-                mirrored={true}
-                height={400}
-                width={400}
-                ref={webcamRef}
-                screenshotFormat="image/jpeg"
-                videoConstraints={videoConstraints}
-            />
+        <>  
+            <div class="camera-container">
+                <Camera
+                    facingMode='environment'
+                    ref={webcamRef}
+                    aspectRatio={4/3}
+                />
+            </div>
+            
             <div class="photo-button">
                 <Button colorScheme='facebook' size="sm" variant="outline" onClick={capture}>Capture</Button>
             </div>
