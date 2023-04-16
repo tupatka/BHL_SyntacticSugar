@@ -63,7 +63,6 @@ export const ChatInput = () => {
         onResult: (result) => {
             setInput(result);
         },
-        lang: 'pl'
     });
 
     const handleMouseUp = () => {
@@ -75,7 +74,7 @@ export const ChatInput = () => {
         if (listening) {
             handleMouseUp();
         } else {
-            listen();
+            listen({interimResults: true, lang: 'pl-PL'});
         }
     }
 
@@ -86,7 +85,7 @@ export const ChatInput = () => {
     // run function to speak the response
     if (talk && response && !loading && response.length !== 0) {
         const voices = window.speechSynthesis.getVoices();
-        const englishVoice = voices.find((voice) => voice.lang === 'pl');
+        const englishVoice = voices.find((voice) => voice.voiceURI === 'Google polski' && voice.lang === 'pl-PL');
 
         console.log(englishVoice);
 
