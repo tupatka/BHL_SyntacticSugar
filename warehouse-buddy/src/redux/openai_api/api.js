@@ -34,9 +34,9 @@ export const FetchResponse = async (searchTerm) => {
 }
 
 
-export const sendTicketApi = async (ticket_text) => {
+export const sendTicketApi = async (ticket) => {
     const url = 'http://localhost:5000/ticketing';
-    const data = {"text": ticket_text, "category": "sent_category"};
+    const data = ticket
 
     const response = await fetch(url, {
         method: 'POST',

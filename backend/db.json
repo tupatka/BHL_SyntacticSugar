@@ -31,7 +31,7 @@
             "id": 1,
             "title": "Rozpakuj palety z komputerami",
             "description": "Rozpakuj palety z firmy BestHackingLeague i umie\u015b\u0107 je w sektorze 2 na regale A na pozycji 1",
-            "category": "unpacking",
+            "category": "rozladunek",
             "done": "False",
             "user_id": 1
         },
@@ -39,7 +39,7 @@
             "id": 2,
             "title": "Przenie\u015b uszkodzony w\u00f3zek wid\u0142owy do sektora A",
             "description": "Uszkodzony w\u00f3zek wid\u0142owy znajduje si\u0119 na ko\u0144cu magazynu. Przenie\u015b go do sektora A. Nie wolno uruchamia\u0107 w\u00f3zka wid\u0142owego, aby go przemie\u015bci\u0107.",
-            "category": "cleaning",
+            "category": "czystosc i ergonomia",
             "done": "False",
             "user_id": 1
         }
@@ -49,8 +49,8 @@
             "id": 1,
             "fast_prompt_text": "Gdzie znajduje si\u0119 paleta do rozpakowania?",
             "category": [
-                "unpacking",
-                "tools"
+                "rozladunek",
+                "narzedzia"
             ],
             "seniority": [
                 "Junior",
@@ -62,10 +62,10 @@
             "id": 2,
             "fast_prompt_text": "Jak dotrze\u0107 do mojego sektora?",
             "category": [
-                "unpacking",
-                "packing",
-                "cleaning",
-                "zones"
+                "rozladunek",
+                "zaladunek",
+                "czystosc i ergonomia",
+                "lokalizacja w magazynie"
             ],
             "seniority": [
                 "Junior"
@@ -75,8 +75,8 @@
             "id": 3,
             "fast_prompt_text": "Co to jest w\u00f3zek wid\u0142owy?",
             "category": [
-                "unpacking",
-                "packing"
+                "rozladunek",
+                "zaladunek"
             ],
             "seniority": [
                 "Junior"
@@ -86,8 +86,8 @@
             "id": 4,
             "fast_prompt_text": "Gdzie umie\u015bci\u0107 no\u017ce?",
             "category": [
-                "unpacking",
-                "packing"
+                "rozladunek",
+                "zaladunek"
             ],
             "seniority": [
                 "Junior"
@@ -97,7 +97,7 @@
             "id": 5,
             "fast_prompt_text": "Gdzie jest apteczka?",
             "category": [
-                "safety"
+                "bezpieczenstwo"
             ],
             "seniority": [
                 "Junior",
@@ -110,12 +110,27 @@
         {
             "id": 1,
             "text": "test",
-            "category": "test_category"
+            "category": "rozladunek"
         },
         {
             "id": 2,
             "text": "test2",
             "category": "test_category2"
+        },
+        {
+            "category": "test3",
+            "description": "test",
+            "id": 3
+        },
+        {
+            "category": "Bezpiecze\u0144stwo",
+            "description": "W\u00f3zek wid\u0142owy si\u0119 przewr\u00f3ci\u0142",
+            "id": 4
+        },
+        {
+            "category": "Bezpiecze\u0144stwo",
+            "description": "Dziecko jest na halI!",
+            "id": 5
         }
     ]
 }

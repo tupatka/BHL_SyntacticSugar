@@ -46,6 +46,8 @@ def ticketing():
 
     if request.method == 'POST': 
         new_ticket = request.get_json()
+        print("new ticket")
+        print(new_ticket)
 
         with open('db.json', 'r') as open_file:
          json_object = json.load(open_file)
