@@ -6,17 +6,19 @@ import { ChatInput } from './ChatInput';
 import { FastPromptSection } from './FastPromptSection';
 import { TaskBanner } from './TaskBanner';
 import { SpeechToText } from './ChatInput/SpeechToText';
+import { Stack } from '@chakra-ui/react'
 
 import './index.css';
 import { TicketSystem } from './TicketSystem';
 
-export const HomeView = ({tasks}) => {
+export const HomeView = ({ tasks }) => {
     return (
         <div class="home-view-container">
-            <TaskBanner tasks={tasks} />
-            <TicketSystem /> 
-            <FastPromptSection />
-            <ChatInput />
+            <Stack spacing={4}>
+                <TaskBanner tasks={tasks} />
+                <FastPromptSection />
+                <ChatInput />
+            </Stack>
         </div>
     );
 }
