@@ -1,10 +1,14 @@
 import './index.css';
-import { Input,
-         IconButton,
-         Button,
-         useDisclosure,
-         FormControl, Text,
-         Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
+import {
+    Input,
+    Stack,
+    IconButton,
+    Button,
+    useDisclosure,
+    Box,
+    FormControl, Text,
+    Card, CardHeader, CardBody, CardFooter
+} from '@chakra-ui/react'
 import {
     Modal,
     ModalOverlay,
@@ -13,8 +17,10 @@ import {
     ModalFooter,
     ModalBody,
     ModalCloseButton,
-    CircularProgress
+    CircularProgress,
 } from '@chakra-ui/react'
+import Siriwave from 'react-siriwave';
+
 import { CheckIcon } from '@chakra-ui/icons'
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -22,6 +28,7 @@ import { loadingSelector, responseSelector } from '../../../redux/openai_api/sel
 import { getResponse, setLoading } from '../../../redux/openai_api/actions';
 import { useSpeechRecognition } from 'react-speech-kit';
 import { useSpeechSynthesis } from 'react-speech-kit';
+import { Spinner } from "@chakra-ui/react";
 
 export const ChatInput = () => {
 
@@ -53,15 +60,23 @@ export const ChatInput = () => {
     }
 
     const { listen, listening, stop } = useSpeechRecognition({
-      onResult: (result) => {
-        setInput(result);
-      },
-      lang: 'pl'
+        onResult: (result) => {
+            setInput(result);
+        },
+        lang: 'pl'
     });
 
     const handleMouseUp = () => {
         getChatResponse(input, dispatch);
         stop();
+    }
+
+    const handleMicClick = () => {
+        if (listening) {
+            handleMouseUp();
+        } else {
+            listen();
+        }
     }
 
     const { speak, speaking, cancel } = useSpeechSynthesis();
@@ -75,62 +90,76 @@ export const ChatInput = () => {
 
         console.log(englishVoice);
 
-        speak({ text: response, voice: englishVoice});
+        speak({ text: response, voice: englishVoice });
         setTalk(false);
         console.log("dupa");
     }
 
+
+
     return (
         <div class="chat-input-container">
-            <div class="chat-input">
-                <Input 
-                    onChange={(event) => {
-                        setInput(event.target.value);
-                    }}
-                    resize="vertical"
-                    placeholder='Enter question'
-                    value={input}
-                />
-                <IconButton
-                    aria-label='Search'
-                    icon={<CheckIcon />}
-                    onClick={() => getChatResponse(input, dispatch)}
-                />
-            </div>
-            <Button onMouseDown={listen} onMouseUp={handleMouseUp}>
-                🎤
-            </Button>
-            
-           
+            <Stack spacing={4}>
+                <div class="chat-input">
+                    <Input
+                        onChange={(event) => {
+                            setInput(event.target.value);
+                        }}
+                        resize="vertical"
+                        placeholder='Enter question'
+                        value={input}
+                    />
+                    <IconButton
+                        aria-label='Search'
+                        icon={<CheckIcon />}
+                        onClick={() => getChatResponse(input, dispatch)}
+                    />
+                </div>
+
+                <Button className="mic-button" onMouseDown={handleMicClick}>
+                    {listening ? (
+                        <Box className="siriwave">
+                                <Spinner size="sm" color="#1c63cc" />
+
+                        </Box>
+                    ) : (
+                        "Tap to speak"
+                    )}
+                </Button>
+
+            </Stack>
+
+
+
             <Modal isOpen={isOpen} onClose={customOnClose}>
                 <ModalOverlay />
                 <ModalContent>
-                <ModalHeader>Warehouse Buddy 😊</ModalHeader>
-                <ModalCloseButton />
-                <ModalBody>
-                    <div class="user-input-in-modal">
-                        {prevInput}
-                    </div>
-                    { loading ? (
+                    <ModalHeader>Warehouse Buddy 😊</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                        <div class="user-input-in-modal">
+                            {prevInput}
+                        </div>
+                        {loading ? (
                             <div class="response-loader">
                                 <CircularProgress isIndeterminate color='blue.300' />
                             </div>
-                        ) : ( 
+                        ) : (
                             <div>
                                 {response}
                             </div>
                         )
-                    }
-                </ModalBody>
+                        }
+                    </ModalBody>
 
-                <ModalFooter>
-                    <Button colorScheme='blue' mr={3} onClick={customOnClose}>
-                    Close
-                    </Button>
-                </ModalFooter>
+                    <ModalFooter>
+                        <Button colorScheme='blue' mr={3} onClick={customOnClose}>
+                            Close
+                        </Button>
+                    </ModalFooter>
                 </ModalContent>
             </Modal>
-            
+
         </div>
     );
 }
