@@ -15,8 +15,8 @@ export const HomeView = ({tasks}) => {
         <div class="home-view-container">
             <TaskBanner tasks={tasks} /> 
             <FastPromptSection />
-            <ChatInput />
             <WebcamScreenshot />
+            <ChatInput />
         </div>
     );
 }

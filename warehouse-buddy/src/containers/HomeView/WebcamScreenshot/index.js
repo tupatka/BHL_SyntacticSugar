@@ -1,6 +1,7 @@
 import './index.css';
 import React, { useCallback, useRef, useState } from "react";
 import Webcam from "react-webcam"
+import { Button} from '@chakra-ui/react'
 
 export const WebcamScreenshot = () => {
 
@@ -16,11 +17,11 @@ export const WebcamScreenshot = () => {
   const capture = useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
     setImg(imageSrc);
-    console.log(img);
   }, [webcamRef]);
 
     return (
-    <div className="Container">
+    <div className="webcam-container">
+
       {img === null ? (
         <>
           <Webcam
@@ -32,12 +33,12 @@ export const WebcamScreenshot = () => {
             screenshotFormat="image/jpeg"
             videoConstraints={videoConstraints}
           />
-          <button onClick={capture}>Capture photo</button>
+          <Button onClick={capture}>Capture photo</Button>
         </>
       ) : (
         <>
           <img src={img} alt="screenshot" />
-          <button onClick={() => setImg(null)}>Retake</button>
+          <Button onClick={() => setImg(null)}>Retake</Button>
         </>
       )}
     </div>
