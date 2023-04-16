@@ -21,7 +21,7 @@ import {
 } from '@chakra-ui/react'
 import Siriwave from 'react-siriwave';
 
-import { CheckIcon } from '@chakra-ui/icons'
+import { Search2Icon } from '@chakra-ui/icons'
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadingSelector, responseSelector } from '../../../redux/openai_api/selectors';
@@ -94,7 +94,6 @@ export const ChatInput = ({ tasks }) => {
 
         speak({ text: response, voice: englishVoice });
         setTalk(false);
-        console.log("dupa");
     }
 
 
@@ -111,14 +110,15 @@ export const ChatInput = ({ tasks }) => {
                         placeholder='Enter question'
                         value={input}
                     />
+                    <span id="space"></span>
                     <IconButton
                         aria-label='Search'
-                        icon={<CheckIcon />}
+                        icon={<Search2Icon />}
                         onClick={() => getChatResponse(input, dispatch)}
                     />
                 </div>
 
-                <Button className="mic-button" onMouseDown={handleMicClick}>
+                <Button className="mic-button" colorScheme="yellow" onMouseDown={handleMicClick}>
                     {listening ? (
                         <Box className="siriwave">
                                 <Spinner size="sm" color="#1c63cc" />

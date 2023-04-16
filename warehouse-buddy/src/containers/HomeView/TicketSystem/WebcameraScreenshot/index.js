@@ -58,14 +58,14 @@ export const WebcamScreenshot = () => {
                 videoConstraints={videoConstraints}
             />
             <div class="photo-button">
-                <Button colorScheme='yellow' size="sm" onClick={capture}>Capture</Button>
+                <Button colorScheme='facebook' size="sm" variant="outline" onClick={capture}>Capture</Button>
             </div>
         </>
       ) : (
         <>
           <img src={img} alt="screenshot" />
           <div class="photo-button">
-            <Button colorScheme='facebook' size="sm" onClick={() => setImg(null)}>Retake</Button>
+            <Button colorScheme='facebook' size="sm" variant="solid" onClick={() => setImg(null)}>Retake</Button>
           </div>
         </>
       )}

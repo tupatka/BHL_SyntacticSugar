@@ -17,7 +17,7 @@ export const SpeechToText = () => {
           onChange={(event) => setValue(event.target.value)}
         />
         <button onMouseDown={listen} onMouseUp={stop}>
-          🎤
+          
         </button>
         {listening && <div>Go ahead I'm listening</div>}
       </div>
