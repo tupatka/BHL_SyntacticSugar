@@ -14,27 +14,26 @@ export const WebcamScreenshot = () => {
     facingMode: "user",
   };
 
+  let user_id = 1;
+
   const capture = useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
     setImg(imageSrc);
 
     let apiUrl = 'http://localhost:5000/save_image';
     let imageData = imageSrc.replace(/^data:image\/png;base64,/, '');
-    let xd = {
+    let req = {
       method: 'POST',
       mode: 'no-cors',
       headers: {
-        'Content-Type': 'application/json', 
+        'Content-Type': 'application/json',
         'Accept': 'application/json',
         'No-Auth': 'True'
       },
-      body: JSON.stringify({ image_data: imageData }), 
-      compress: true
+      body: JSON.stringify({ image_data: imageData, id: user_id }),
     }
-
-    console.log(xd);
-
-    fetch(apiUrl, xd )
+    user_id = user_id + 1;
+    fetch(apiUrl, req)
       .then(response => {
         console.log(response);
       })
