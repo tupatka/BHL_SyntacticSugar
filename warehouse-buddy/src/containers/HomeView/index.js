@@ -6,7 +6,7 @@ import { ChatInput } from './ChatInput';
 import { FastPromptSection } from './FastPromptSection';
 import { TaskBanner } from './TaskBanner';
 import { SpeechToText } from './ChatInput/SpeechToText';
-import { Stack } from '@chakra-ui/react'
+import { Divider, Stack } from '@chakra-ui/react'
 
 import './index.css';
 import { TicketSystem } from './TicketSystem';
@@ -17,8 +17,11 @@ export const HomeView = ({ tasks }) => {
             <Stack spacing={4}>
                 <TaskBanner tasks={tasks} />
                 <TicketSystem />
-                <FastPromptSection />
-                <ChatInput />
+                <div class="chat-container">
+                    <FastPromptSection />
+                    <Divider id="chat-divider"/>
+                    <ChatInput />
+                </div>
             </Stack>
         </div>
     );
