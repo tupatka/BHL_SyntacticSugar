@@ -1,10 +1,13 @@
 import './index.css';
-import { Input,
-         IconButton,
-         Button,
-         useDisclosure,
-         FormControl, Text,
-         Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
+import {
+    Input,
+    Stack,
+    IconButton,
+    Button,
+    useDisclosure,
+    FormControl, Text,
+    Card, CardHeader, CardBody, CardFooter
+} from '@chakra-ui/react'
 import {
     Modal,
     ModalOverlay,
@@ -13,7 +16,7 @@ import {
     ModalFooter,
     ModalBody,
     ModalCloseButton,
-    CircularProgress
+    CircularProgress,
 } from '@chakra-ui/react'
 import Siriwave from 'react-siriwave';
 
@@ -55,10 +58,10 @@ export const ChatInput = () => {
     }
 
     const { listen, listening, stop } = useSpeechRecognition({
-      onResult: (result) => {
-        setInput(result);
-      },
-      lang: 'pl'
+        onResult: (result) => {
+            setInput(result);
+        },
+        lang: 'pl'
     });
 
     const handleMouseUp = () => {
@@ -67,7 +70,7 @@ export const ChatInput = () => {
     }
 
     const handleMicClick = () => {
-        if(listening) {
+        if (listening) {
             handleMouseUp();
         } else {
             listen();
@@ -85,71 +88,76 @@ export const ChatInput = () => {
 
         console.log(englishVoice);
 
-        speak({ text: response, voice: englishVoice});
+        speak({ text: response, voice: englishVoice });
         setTalk(false);
         console.log("dupa");
     }
 
 
-    
+
 
     return (
         <div class="chat-input-container">
-            <div class="chat-input">
-                <Input 
-                    onChange={(event) => {
-                        setInput(event.target.value);
-                    }}
-                    resize="vertical"
-                    placeholder='Enter question'
-                    value={input}
-                />
-                <IconButton
-                    aria-label='Search'
-                    icon={<CheckIcon />}
-                    onClick={() => getChatResponse(input, dispatch)}
-                />
-            </div>
-            <Button onMouseDown={handleMicClick}>
-                { listening ? (
-                    <div className="siriwave">
-                        <Siriwave theme="ios9" color="#1c63cc" amplitude={0.5}/>
-                    </div>
-                ) : (
-                    "Tap to speak"
-                )}
-            </Button>
-            
-           
+            <Stack spacing={4}>
+                <div class="chat-input">
+                    <Input
+                        onChange={(event) => {
+                            setInput(event.target.value);
+                        }}
+                        resize="vertical"
+                        placeholder='Enter question'
+                        value={input}
+                    />
+                    <IconButton
+                        aria-label='Search'
+                        icon={<CheckIcon />}
+                        onClick={() => getChatResponse(input, dispatch)}
+                    />
+                </div>
+
+                <Button onMouseDown={handleMicClick}>
+                    {listening ? (
+                        <div className="siriwave">
+                            <Siriwave theme="ios9" color="#1c63cc" amplitude={0.5} />
+                        </div>
+                    ) : (
+                        "Tap to speak"
+                    )}
+                </Button>
+
+            </Stack>
+
+
+
             <Modal isOpen={isOpen} onClose={customOnClose}>
                 <ModalOverlay />
                 <ModalContent>
-                <ModalHeader>Warehouse Buddy 😊</ModalHeader>
-                <ModalCloseButton />
-                <ModalBody>
-                    <div class="user-input-in-modal">
-                        {prevInput}
-                    </div>
-                    { loading ? (
+                    <ModalHeader>Warehouse Buddy 😊</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                        <div class="user-input-in-modal">
+                            {prevInput}
+                        </div>
+                        {loading ? (
                             <div class="response-loader">
                                 <CircularProgress isIndeterminate color='blue.300' />
                             </div>
-                        ) : ( 
+                        ) : (
                             <div>
                                 {response}
                             </div>
                         )
-                    }
-                </ModalBody>
+                        }
+                    </ModalBody>
 
-                <ModalFooter>
-                    <Button colorScheme='blue' mr={3} onClick={customOnClose}>
-                    Close
-                    </Button>
-                </ModalFooter>
+                    <ModalFooter>
+                        <Button colorScheme='blue' mr={3} onClick={customOnClose}>
+                            Close
+                        </Button>
+                    </ModalFooter>
                 </ModalContent>
             </Modal>
-            
+
         </div>
     );
 }
