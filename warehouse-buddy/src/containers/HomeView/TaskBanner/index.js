@@ -1,7 +1,7 @@
 import './index.css';
 import { Button, useDisclosure, Flex, Spacer } from '@chakra-ui/react'
 import { ArrowForwardIcon } from '@chakra-ui/icons'
-import { Card, CardBody } from '@chakra-ui/react'
+import { Card, CardBody, CardHeader, Heading } from '@chakra-ui/react'
 import { IconButton } from '@chakra-ui/react'
 
 import{Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton} from '@chakra-ui/react'
@@ -12,8 +12,9 @@ export const TaskBanner = ({tasks}) => {
 
     return (
         <div class="task-banner-container">
-            <Card style={{ boxShadow: ' 0px 3px 10px rgba(0, 0, 0, 0.35)' }}>
+            <Card style={{ boxShadow: ' 0px 1px 8px rgba(0, 128, 128, 0.4)' }}>
                 <CardBody>
+                    <Heading size='xs' id='header-title'>Obecne zadanie</Heading>
                     <Flex>
                         <b id="current-task">
                             {tasks.length === 0 ? (
@@ -26,7 +27,8 @@ export const TaskBanner = ({tasks}) => {
                         <Spacer />
                         <IconButton
                             onClick={onOpen}
-                            colorScheme='blue'
+                            color='white'
+                            background='teal.500'
                             aria-label='Search database'
                             icon={<ArrowForwardIcon />}
                             size="sm"
@@ -37,7 +39,7 @@ export const TaskBanner = ({tasks}) => {
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader>All Tasks</ModalHeader>
+                    <ModalHeader>Wszystkie zadania</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
                         <AllTasksList tasks={tasks} />
