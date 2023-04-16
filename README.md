@@ -10,9 +10,17 @@ Repository for 2023 Best Hacking League
 
 - Jakub Podolak
 
-  
+### Our solution
 
-### Description
+We present a platform that combines easy flow of information in the warehouse with a voice assistant.
+
+*Warehouse Buddy*:
+- Knows the layout and rules of the warehouse
+- Knows what tasks the workers have to perform
+- Can be talked to like an experienced colleague
+- Transmits information between the manager and the workers.
+
+### Description of functionalites
 
 At the top part of the screen user can see his current task. Clicking arrow expands task description and list of their next tasks. 
 
