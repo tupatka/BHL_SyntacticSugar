@@ -30,7 +30,7 @@ import { useSpeechRecognition } from 'react-speech-kit';
 import { useSpeechSynthesis } from 'react-speech-kit';
 import { Spinner } from "@chakra-ui/react";
 
-export const ChatInput = () => {
+export const ChatInput = ({ tasks }) => {
 
     const dispatch = useDispatch();
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -55,7 +55,7 @@ export const ChatInput = () => {
         setInput("");
         setTalk(true);
         dispatch(setLoading());
-        dispatch(getResponse(prompt));
+        dispatch(getResponse({"prompt": prompt, "tasks": tasks}));
         onOpen();
     }
 
