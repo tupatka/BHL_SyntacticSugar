@@ -88,13 +88,15 @@ export const FastPromptSection = () => {
             <Stack spacing="4">
                 {fast_prompts.slice(0, rows).map((prompt, index) => (
                     <ButtonGroup key={index} flexDirection={isMobile ? "column" : "row"} borderRadius="md">
-                        <Button
+                        <Button 
                             onClick={() => getChatResponse(prompt.fast_prompt_text, dispatch)}
                             flex={isMobile ? "none" : "1"}
                             colorScheme="blue"
                             borderRadius="md"
                             whiteSpace="normal"
-                            wordWrap="break-word"                      >
+                            wordWrap="break-word"
+                            style={{ boxShadow: "0 2px 4px 0 rgba(0,0,0,0.8)" }}
+                            height="3.5rem">
                             {prompt.fast_prompt_text}
                         </Button>
                         {fast_prompts[index + 1] && !isMobile &&

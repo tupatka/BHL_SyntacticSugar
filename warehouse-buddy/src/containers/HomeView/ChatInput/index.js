@@ -95,7 +95,6 @@ export const ChatInput = () => {
 
 
 
-
     return (
         <div class="chat-input-container">
             <Stack spacing={4}>
