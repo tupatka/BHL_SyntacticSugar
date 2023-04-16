@@ -1,3 +1,7 @@
 #current-task{
-    color: rgb(65, 179, 30);
+    color: teal;
+}
+
+.task-description{
+    color: rgb(102, 107, 107);
 }
