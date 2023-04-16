@@ -13,7 +13,7 @@ import './index.css';
 export const HomeView = ({ tasks }) => {
     return (
         <div class="home-view-container">
-            <Stack>
+            <Stack spacing={4}>
                 <TaskBanner tasks={tasks} />
                 <FastPromptSection />
                 <ChatInput />
