@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 from flask_cors import CORS, cross_origin
 import json
 app = Flask(__name__)
@@ -8,7 +8,12 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 @app.route("/")
 @cross_origin()
 def hello_world():
-    return "<p>Hello, World!</p><b>pogrubiony tekst</b>"
+    with open('db.json', 'r') as open_file:
+        json_result = json.load(open_file)
+    issues = json_result["tickets"]
+    tasks = json_result["tasks"]
+
+    return render_template('index.html', issues=issues, tasks=tasks)
 
 @app.route('/tasks', methods=['GET'])
 @cross_origin()
@@ -28,7 +33,38 @@ def get_users():
          json_result = json.load(open_file)
          users = json.dumps(json_result["users"])
 
-    return users    
+    return users
+
+
+@app.route('/delete_task/<int:task_id>')
+def delete_task(task_id):
+    with open('db.json', 'r') as open_file:
+         data = json.load(open_file)
+    tasks = data['tasks']
+    for task in tasks:
+        if task['id'] == task_id:
+            tasks.remove(task)
+            break
+    with open('db.json', 'w') as f:
+        json.dump(data, f)
+    return redirect(url_for('index'))
+
+
+@app.route('/create_task', methods=['POST'])
+def create_task():
+    tasks = data['tasks']
+    new_task = {
+        'id': len(tasks) + 1,
+        'title': request.form['title'],
+        'description': request.form['description'],
+        'category': request.form['category'],
+        'done': 'False',
+        'user_id': int(request.form['user'])
+    }
+    tasks.append(new_task)
+    with open('db.json', 'w') as f:
+        json.dump(data, f)
+    return redirect(url_for('index'))
 
 @app.route('/fast_prompts', methods=['GET'])
 @cross_origin()
