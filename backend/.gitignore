@@ -49,3 +49,4 @@ logs/
 *.tar.gz
 *.idea
 .envrc
+images/*
