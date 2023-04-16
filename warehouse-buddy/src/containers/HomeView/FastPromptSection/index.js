@@ -28,16 +28,22 @@ export const FastPromptSection = ({ tasks }) => {
                 return response.json()
             })
             .then(data => {
-                let cat = tasks[0].category;
-                let f = data.filter((x) => x.category === cat);
-                setFastPrompts(f);
-                console.log(f)
+                console.log('fetched tasks:');
+                console.log(tasks);
+                if (tasks.length === 0) {
+                    setFastPrompts(data);
+                } else {
+                    let cat = tasks[0].category;
+                    let f = data.filter((x) => x.category === cat);
+                    setFastPrompts(f);
+                    console.log(f)
+                }
             })
     }
 
     useEffect(() => {
         setFastPromptsData()
-    }, [])
+    }, [tasks])
 
     const dispatch = useDispatch();
     const { isOpen, onOpen, onClose } = useDisclosure()
