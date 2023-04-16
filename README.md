@@ -9,6 +9,10 @@ Repository for 2023 Best Hacking League
 - Adam Deryło
 
 - Jakub Podolak
+- 
+### Final PPTX Presentation
+
+https://docs.google.com/presentation/d/1FnO9G5VxklH3rtHWOiujXiXN_TW84CfxE5ATwYr07Qk/edit?usp=sharing
 
 ### Our solution
 
