@@ -32,6 +32,9 @@ import { Spinner } from "@chakra-ui/react";
 
 export const ChatInput = ({ tasks }) => {
 
+    console.log('in chat input');
+    console.log(tasks);
+
     const dispatch = useDispatch();
     const { isOpen, onOpen, onClose } = useDisclosure()
 

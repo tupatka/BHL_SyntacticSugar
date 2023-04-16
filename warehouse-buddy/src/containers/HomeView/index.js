@@ -18,9 +18,9 @@ export const HomeView = ({ tasks }) => {
                 <TaskBanner tasks={tasks} />
                 <TicketSystem />
                 <div class="chat-container">
-                    <FastPromptSection />
+                    <FastPromptSection tasks={tasks} />
                     <Divider id="chat-divider"/>
-                    <ChatInput />
+                    <ChatInput tasks={tasks} />
                 </div>
             </Stack>
         </div>
