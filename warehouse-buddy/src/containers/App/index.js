@@ -14,7 +14,7 @@ const App = () => {
             return response.json()
           })
           .then(data => {
-            setTasks(data)
+            setTasks(data); 
           })
     }
 

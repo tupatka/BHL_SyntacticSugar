@@ -28,8 +28,10 @@ export const FastPromptSection = ({ tasks }) => {
                 return response.json()
             })
             .then(data => {
-                setFastPrompts(data)
-                console.log(data)
+                let cat = tasks[0].category;
+                let f = data.filter((x) => x.category === cat);
+                setFastPrompts(f);
+                console.log(f)
             })
     }
 
@@ -60,7 +62,7 @@ export const FastPromptSection = ({ tasks }) => {
         setInput("");
         setTalk(true);
         dispatch(setLoading());
-        dispatch(getResponse({"prompt": prompt, "tasks": tasks}));
+        dispatch(getResponse({ "prompt": prompt, "tasks": tasks }));
         onOpen();
     }
 
@@ -98,7 +100,7 @@ export const FastPromptSection = ({ tasks }) => {
             <Stack spacing="4">
                 {fast_prompts.slice(0, rows).map((prompt, index) => (
                     <ButtonGroup key={index} flexDirection={isMobile ? "column" : "row"} borderRadius="md">
-                        <Button 
+                        <Button
                             onClick={() => getChatResponse(prompt.fast_prompt_text, dispatch)}
                             flex={isMobile ? "none" : "1"}
                             colorScheme="blue"
@@ -117,6 +119,8 @@ export const FastPromptSection = ({ tasks }) => {
                                 borderRadius="md"
                                 whiteSpace="normal"
                                 wordWrap="break-word"
+                                style={{ boxShadow: "0 2px 4px 0 rgba(0,0,0,0.8)" }}
+                                height="3.5rem"
                             >
                                 {fast_prompts[index + 1].fast_prompt_text}
                             </Button>
