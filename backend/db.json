@@ -131,6 +131,21 @@
             "category": "Bezpiecze\u0144stwo",
             "description": "Dziecko jest na halI!",
             "id": 5
+        },
+        {
+            "category": "Roz\u0142adunek",
+            "description": "Paczki kt\u00f3re przyjecha\u0142y s\u0105 uszkodzone",
+            "id": 6
+        },
+        {
+            "category": "Bezpiecze\u0144stwo",
+            "description": "\u015alisko",
+            "id": 7
+        },
+        {
+            "category": "Bezpiecze\u0144stwo",
+            "description": "",
+            "id": 8
         }
     ]
 }

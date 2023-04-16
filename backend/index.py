@@ -67,3 +67,23 @@ def ticketing():
             json_result = json.load(open_file)
             tickets = json.dumps(json_result["tickets"])
             return tickets      
+
+
+@app.route('/save_image', methods=['POST', 'GET'])
+@cross_origin()
+def save_image():
+    import base64
+    from io import BytesIO
+    from PIL import Image
+ 
+    data = json.loads(request.data.decode())
+    id = data["id"]
+    data = data["image_data"]
+
+    starter = data.find(',')
+    image_data = data[starter+1:]
+    image_data = bytes(image_data, encoding="utf-8")
+    im = Image.open(BytesIO(base64.b64decode(image_data)))
+    im.save('images/image' + str(id) +'.jpeg')
+    
+    return 'OK'
