@@ -8,7 +8,7 @@ export const WAREHOUSE_BASIC_INFO =
   PLAN MAGAZYNU:
   Zachodnia częśc jest na dostawy towaru. Tutaj przyjeżdżają ciężarówki i pracownicy wypakowują towar.
   Niedaleko tych drzwi jest taśma która pozwala przewozić towary z ciężarówki wgłąb magazynu. Kosztowne produkty 
-  są na północno-zachodniej części hali, po lewej od kosztownych produktów jest chłodnia na zimne produkty.
+  są na północno-zachodniej części hali, po lewej od kosztownych produktów jest chłodnia na zimne produkty i leki.
   Żeby tam wejść potrzebny jest klucz, który można odebrać w biurze. W południowo zachodniej części biura jest 
   obszar na produkty luźne, sypkie lub w workach. Środkowa i południowa część hali to 3 duże rzędy regałów na palety, oznaczone od
   zachodniej do wschodniej części: A, B, C. W rzędzie A: elektronika, w rzędzie B: ubrania, w rzędzie C: pozostałe. Każdy z tych
