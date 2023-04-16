@@ -26,7 +26,6 @@ export const backendEpic = (action$, state$) =>
         switchMap(ticket =>
             from(sendTicketApi(ticket)).pipe(
                 map((result) => setTicketSend(result)),
-                catchError((e) => console.log(e))
-            )
+                catchError((e) => console.log(e)))
     ),
 );
