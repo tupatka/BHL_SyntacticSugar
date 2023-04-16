@@ -12,7 +12,7 @@ export const TaskBanner = ({tasks}) => {
 
     return (
         <div class="task-banner-container">
-            <Card style={{ boxShadow: ' 0px 1px 8px rgba(35, 95, 17, 0.4)' }}>
+            <Card style={{ boxShadow: ' 0px 1px 8px rgba(0, 128, 128, 0.4)' }}>
                 <CardBody>
                     <Heading size='xs' id='header-title'>Obecne zadanie</Heading>
                     <Flex>
@@ -27,7 +27,8 @@ export const TaskBanner = ({tasks}) => {
                         <Spacer />
                         <IconButton
                             onClick={onOpen}
-                            colorScheme='blue'
+                            color='white'
+                            background='teal.500'
                             aria-label='Search database'
                             icon={<ArrowForwardIcon />}
                             size="sm"
