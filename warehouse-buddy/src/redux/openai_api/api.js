@@ -2,9 +2,35 @@ import { API_BASE_URL, API_TOKEN, WAREHOUSE_BASIC_INFO, RESPONSE_INSTRUCTIONS} f
 
 const OPENAI_API_KEY = process.env.REACT_APP_OPENAI_API_KEY
 
-const SYSTEM_MSG = WAREHOUSE_BASIC_INFO + RESPONSE_INSTRUCTIONS
 
-export const FetchResponse = async (searchTerm) => {
+
+const CreateTasksInput = (tasks) => {
+    const tasksString = JSON.stringify(tasks);
+
+    const tasksFormatted = 
+    `
+        AKTYWNE ZADANIA UŻYTKOWNIKA:
+
+        Poniżej masz informacje na temat aktualnych zadań użytkownika.
+        Na początku jest obecne zadanie, potem kolejne. Pomóż użytkownikowi w wykonaniu tych zadań.
+        Gdy użytkownik zapyta co powinien zrobić, na podstawie tych zadań daj wskazówki.
+        ${tasksString}
+
+    `
+
+    return tasksFormatted;
+}
+
+export const FetchResponse = async (query) => {
+
+
+    const searchTerm = query["prompt"];
+    const tasks = query["tasks"];
+
+    const tasksInfo = CreateTasksInput(tasks);
+
+    const SYSTEM_MSG = WAREHOUSE_BASIC_INFO + tasksInfo + RESPONSE_INSTRUCTIONS;
+
 
     console.log(SYSTEM_MSG);
 
