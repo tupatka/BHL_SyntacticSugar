@@ -34,24 +34,22 @@ export const FetchResponse = async (searchTerm) => {
 }
 
 
-export const sendTicketApi = async (ticket) => {
-    console.log("Sending ticket!");
-    const jsonData = {
-        "text": "test z frontendu",
-        "category": "test"
-    };
+export const sendTicketApi = async (ticket_text) => {
+    const url = 'http://localhost:5000/ticketing';
+    const data = {"text": ticket_text, "category": "sent_category"};
 
-    const rawresponse = await fetch("http://localhost:5000/ticketing", { 
-        method: 'POST', 
+    const response = await fetch(url, {
+        method: 'POST',
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-        mode: 'no-cors',
-        body: JSON.stringify(jsonData) 
-    });
+            'Content-Type': 'application/json',
+            'No-Auth': 'True'
+        },
+        body: JSON.stringify(data),
+        compress: true
+        });
 
-    const response = await rawresponse;
+    const json = await response;
 
     return "done";
 }
