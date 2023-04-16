@@ -19,7 +19,7 @@ import {
 } from '@chakra-ui/react'
 
 
-export const FastPromptSection = () => {
+export const FastPromptSection = ({ tasks }) => {
     const [fast_prompts, setFastPrompts] = useState([])
 
     const setFastPromptsData = () => {
@@ -56,12 +56,11 @@ export const FastPromptSection = () => {
     console.log(input);
 
     const getChatResponse = (prompt, dispatch) => {
-        console.log("prumt");
         setPrevInput(input);
         setInput("");
         setTalk(true);
         dispatch(setLoading());
-        dispatch(getResponse(prompt));
+        dispatch(getResponse({"prompt": prompt, "tasks": tasks}));
         onOpen();
     }
 
@@ -82,6 +81,17 @@ export const FastPromptSection = () => {
 
     const isMobile = useBreakpointValue({ base: true, md: false })
     const rows = isMobile ? 6 : 3;
+
+    if (talk && response && !loading && response.length !== 0) {
+        const voices = window.speechSynthesis.getVoices();
+        const englishVoice = voices.find((voice) => voice.lang === 'pl');
+
+        console.log(englishVoice);
+
+        speak({ text: response, voice: englishVoice });
+        setTalk(false);
+        console.log("dupa");
+    }
 
     return (
         <div className="fast-prompt-container">
