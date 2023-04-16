@@ -26,7 +26,7 @@ export const TicketSystem = () => {
 
     return (
         <div class="ticket-system-container">
-            <Button onClick={onOpen} colorScheme="blue" variant="outline">Report Issue</Button>
+            <Button id="ticket-button" onClick={onOpen} colorScheme="red" variant="solid">Report Issue</Button>
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
