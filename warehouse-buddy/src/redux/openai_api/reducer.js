@@ -1,4 +1,4 @@
-import { SET_LOADING, SET_RESPONSE } from "./const"
+import { SET_LOADING, SET_RESPONSE, SET_TICKET_SEND } from "./const"
 
 export const OPENAI_REDUCER_NAME = 'openai_data';
 
@@ -19,6 +19,11 @@ export const openaiReducer = (state = initial_openai_state, action) => {
                 ...state,
                 response: action.payload,
                 loading: false
+            }
+        case SET_TICKET_SEND:
+            return {
+                ...state,
+                tickets_status: action.response
             }
         default:
             return state

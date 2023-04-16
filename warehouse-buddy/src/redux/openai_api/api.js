@@ -34,3 +34,22 @@ export const FetchResponse = async (searchTerm) => {
 }
 
 
+export const sendTicketApi = async (ticket_text) => {
+    const url = 'http://localhost:5000/ticketing';
+    const data = {"text": ticket_text, "category": "sent_category"};
+
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'No-Auth': 'True'
+        },
+        body: JSON.stringify(data),
+        compress: true
+        });
+
+    const json = await response;
+
+    return "done";
+}
