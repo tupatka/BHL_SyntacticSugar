@@ -17,11 +17,16 @@ export const HomeView = ({ tasks }) => {
             <Stack spacing={4}>
                 <TaskBanner tasks={tasks} />
                 <TicketSystem />
+<<<<<<< HEAD
                 <div class="chat-container">
                     <FastPromptSection />
                     <Divider id="chat-divider"/>
                     <ChatInput />
                 </div>
+=======
+                <FastPromptSection tasks={tasks} />
+                <ChatInput tasks={tasks} />
+>>>>>>> main
             </Stack>
         </div>
     );
