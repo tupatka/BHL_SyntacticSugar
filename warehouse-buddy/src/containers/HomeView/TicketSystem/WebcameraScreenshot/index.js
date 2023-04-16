@@ -14,7 +14,8 @@ export const WebcamScreenshot = () => {
     facingMode: "user",
   };
 
-  let user_id = 1;
+  // randomly mocked each image
+  let user_id = 0 + Math.random() * (1000000 - 0);
 
   const capture = useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();

@@ -1,6 +1,7 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect, url_for
 from flask_cors import CORS, cross_origin
 import json
+import os
 app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
@@ -13,7 +14,9 @@ def hello_world():
     issues = json_result["tickets"]
     tasks = json_result["tasks"]
 
-    return render_template('index.html', issues=issues, tasks=tasks)
+    images = os.listdir('static/images/')
+
+    return render_template('index.html', issues=issues, tasks=tasks, impaths=images)
 
 @app.route('/tasks', methods=['GET'])
 @cross_origin()
@@ -36,7 +39,7 @@ def get_users():
     return users
 
 
-@app.route('/delete_task/<int:task_id>')
+@app.route('/delete_task/<int:task_id>', methods=['POST'])
 def delete_task(task_id):
     with open('db.json', 'r') as open_file:
          data = json.load(open_file)
@@ -47,11 +50,26 @@ def delete_task(task_id):
             break
     with open('db.json', 'w') as f:
         json.dump(data, f)
-    return redirect(url_for('index'))
+    return redirect(url_for('hello_world'))
 
+
+@app.route('/delete_issue/<int:issue_id>', methods=['POST'])
+def delete_issue(issue_id):
+    with open('db.json', 'r') as open_file:
+         data = json.load(open_file)
+    tickets = data['tickets']
+    for ticket in tickets:
+        if ticket['id'] == issue_id:
+            tickets.remove(ticket)
+            break
+    with open('db.json', 'w') as f:
+        json.dump(data, f)
+    return redirect(url_for('hello_world'))
 
 @app.route('/create_task', methods=['POST'])
 def create_task():
+    with open('db.json', 'r') as open_file:
+         data = json.load(open_file)
     tasks = data['tasks']
     new_task = {
         'id': len(tasks) + 1,
@@ -59,12 +77,12 @@ def create_task():
         'description': request.form['description'],
         'category': request.form['category'],
         'done': 'False',
-        'user_id': int(request.form['user'])
+        'user_id': 1
     }
     tasks.append(new_task)
     with open('db.json', 'w') as f:
         json.dump(data, f)
-    return redirect(url_for('index'))
+    return redirect(url_for('hello_world'))
 
 @app.route('/fast_prompts', methods=['GET'])
 @cross_origin()
@@ -120,6 +138,6 @@ def save_image():
     image_data = data[starter+1:]
     image_data = bytes(image_data, encoding="utf-8")
     im = Image.open(BytesIO(base64.b64decode(image_data)))
-    im.save('images/image' + str(id) +'.jpeg')
+    im.save('static/images/image' + str(id) +'.jpeg')
     
     return 'OK'
