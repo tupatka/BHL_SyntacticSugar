@@ -27,6 +27,9 @@ export const FetchResponse = async (query) => {
     const searchTerm = query["prompt"];
     const tasks = query["tasks"];
 
+    console.log('In fetch response');
+    console.log(tasks);
+
     const tasksInfo = CreateTasksInput(tasks);
 
     const SYSTEM_MSG = WAREHOUSE_BASIC_INFO + tasksInfo + RESPONSE_INSTRUCTIONS;
@@ -60,9 +63,9 @@ export const FetchResponse = async (query) => {
 }
 
 
-export const sendTicketApi = async (ticket_text) => {
+export const sendTicketApi = async (ticket) => {
     const url = 'http://localhost:5000/ticketing';
-    const data = {"text": ticket_text, "category": "sent_category"};
+    const data = ticket
 
     const response = await fetch(url, {
         method: 'POST',
