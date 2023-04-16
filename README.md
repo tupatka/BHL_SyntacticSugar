@@ -12,7 +12,7 @@ Repository for 2023 Best Hacking League
 
   
 
-### Usage
+### Description
 
 At the top part of the screen user can see his current task. Clicking arrow expands task description and list of their next tasks. 
 
@@ -64,5 +64,35 @@ App starts on `localhost:3000`
 
 #### Technical solutions used
 
-AI solutions used is not free. 
+AI assistant is GPT 3.5 playground which not free to use. 
+
+We mocked a database to work with user's task and common questions they may have (our mocked database is in the form of a json file which collects all of this information, with parts of it hardcoded - such as the analytics since we only implemented the flow for the quant team).
+
+This is a model, in the form of a json, of how and what data we keep:
+
+```json
+ "tasks": [
+     {
+      "id": 1,
+      "title": "Komp",
+      "description": "",
+      "category": "Kompletowanie zam\u00f3wienia", 
+      "done": "False", 
+      "user_id": 1
+     }
+ ], 
+
+"fast_prompts": [
+    {
+    "id": 1, 
+     "fast_prompt_text": "Gdzie znajduje si\u0119 paleta do rozpakowania?", 
+     "category": "Roz\u0142adunek", 
+     "seniority": ["Junior", "Regular", "Specialist"]
+    }, 
+    {"id": 2,
+     "fast_prompt_text": "Gdzie mam przenie\u015b\u0107 wypakowany towar?", 
+     "category": "Roz\u0142adunek", 
+     "seniority": ["Junior", "Regular", "Specialist"]
+    }]
+```
 
