@@ -1,5 +1,5 @@
 import './index.css';
-import { Button, useDisclosure, Flex, Spacer } from '@chakra-ui/react'
+import { Button, useDisclosure, Flex, Spacer, Divider } from '@chakra-ui/react'
 
 import{Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton} from '@chakra-ui/react'
 import { Textarea } from '@chakra-ui/react'
@@ -7,6 +7,7 @@ import { Select } from '@chakra-ui/react'
 import { useSelector, useDispatch } from 'react-redux';
 import { sendTicket } from '../../../redux/openai_api/actions';
 import React, { useState } from 'react';
+import { WebcamScreenshot } from './WebcameraScreenshot';
 
 export const TicketSystem = () => {
     const dispatch = useDispatch();
@@ -49,13 +50,15 @@ export const TicketSystem = () => {
                     <ModalHeader />
                     <ModalCloseButton />
                     <ModalBody>
-                        <Select placeholder='Wybierz kategorię zgłoszenia'onChange={handleChange} value={selectedCategory}>
+                        <WebcamScreenshot />
+                        <Select class="select-ticket-type" placeholder='Wybierz kategorię zgłoszenia'onChange={handleChange} value={selectedCategory}>
                             {list}
-                        </Select>   
-                        <Textarea placeholder='Write your description here.' size='md' h='calc(60vh)' onChange={handleChangeInput} value={issue}/>
+                        </Select> 
+                        <Divider id="ticket-divider"/>  
+                        <Textarea placeholder='Write your description here.' size='md' h='calc(20vh)' onChange={handleChangeInput} value={issue}/>
                     </ModalBody>
                     <ModalFooter>
-                        <Button colorScheme='blue' mr={3} onClick={onSend}>
+                        <Button colorScheme='facebook' mr={3} onClick={onSend}>
                             Submit
                         </Button>
                     </ModalFooter>

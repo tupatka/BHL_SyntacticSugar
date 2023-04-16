@@ -13,3 +13,11 @@
 #ticket-button {
     width: 100%;
 }
+
+#ticket-divider{
+    width: 100%;
+    height: 1px;
+    background-color: white;
+    color: white;
+    margin: 0.1em;
+}
