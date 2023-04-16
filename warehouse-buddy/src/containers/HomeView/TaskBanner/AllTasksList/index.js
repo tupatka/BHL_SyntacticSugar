@@ -24,13 +24,13 @@ export const AllTasksList = ({tasks}) => {
                 <h2>
                 <AccordionButton>
                     <Box as="span" flex='1' textAlign='left'>
-                        <b>{task.title}</b>
+                        {task.title}
                     </Box>
                     <AccordionIcon />
                 </AccordionButton>
                 </h2>
                 <AccordionPanel pb={4}>
-                    {task.description}
+                    <span class="task-description">{task.description}</span>
                 </AccordionPanel>
             </AccordionItem>)
     })
@@ -58,7 +58,7 @@ export const AllTasksList = ({tasks}) => {
                 {tasks.length === 0 ? (
                     <span>  </span>
                 ) : (
-                    <span> {first.description} </span>
+                    <span class="task-description"> {first.description} </span>
                 )
                 }
                 </AccordionPanel>

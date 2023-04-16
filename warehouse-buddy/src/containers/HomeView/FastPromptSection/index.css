@@ -1,8 +1,6 @@
 .fast-prompt-container {
-    height: 30em;
+    height: 25em;
     color: rgb(172, 172, 172);
     width: 100%;
     padding: 2rem;
-    border-radius: 10px; /* Add rounded corners */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a box shadow for depth */
   }
