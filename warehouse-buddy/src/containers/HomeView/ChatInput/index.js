@@ -5,6 +5,7 @@ import {
     IconButton,
     Button,
     useDisclosure,
+    Box,
     FormControl, Text,
     Card, CardHeader, CardBody, CardFooter
 } from '@chakra-ui/react'
@@ -27,6 +28,7 @@ import { loadingSelector, responseSelector } from '../../../redux/openai_api/sel
 import { getResponse, setLoading } from '../../../redux/openai_api/actions';
 import { useSpeechRecognition } from 'react-speech-kit';
 import { useSpeechSynthesis } from 'react-speech-kit';
+import { Spinner } from "@chakra-ui/react";
 
 export const ChatInput = () => {
 
@@ -114,11 +116,12 @@ export const ChatInput = () => {
                     />
                 </div>
 
-                <Button onMouseDown={handleMicClick}>
+                <Button className="mic-button" onMouseDown={handleMicClick}>
                     {listening ? (
-                        <div className="siriwave">
-                            <Siriwave theme="ios9" color="#1c63cc" amplitude={0.5} />
-                        </div>
+                        <Box className="siriwave">
+                                <Spinner size="sm" color="#1c63cc" />
+
+                        </Box>
                     ) : (
                         "Tap to speak"
                     )}
